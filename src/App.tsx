@@ -37,8 +37,8 @@ function App() {
           handlePythonEvent(eventType, eventData);
         };
 
-        // Load the blockchain module
-        const blockchainCode = await fetch('/blockchain.py').then(r => r.text());
+        // Load the blockchain module - use relative path for GitHub Pages
+        const blockchainCode = await fetch('./blockchain.py').then(r => r.text());
         await pyodideInstance.runPythonAsync(blockchainCode);
 
         setPyodide(pyodideInstance);
@@ -127,9 +127,9 @@ sys.stdout = StringIO()
 sys.stderr = StringIO()
       `);
 
-      // Load auto-visualization wrapper
+      // Load auto-visualization wrapper - use relative path for GitHub Pages
       try {
-        const wrapperCode = await fetch('/auto_visualizer.py').then(r => r.text());
+        const wrapperCode = await fetch('./auto_visualizer.py').then(r => r.text());
         const wrappedCode = wrapperCode + '\n\n# === USER CODE ===\n\n' + code;
 
         // Run wrapped code with auto-visualization
