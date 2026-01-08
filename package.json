@@ -3,10 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://bhabanishankar-01.github.io/blockchainvisualiser",
+  "homepage": "https://piratekingmonkeydluffy904-afk.github.io/BlockchainVisualiser",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && echo. > dist/.nojekyll",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
