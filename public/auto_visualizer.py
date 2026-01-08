@@ -101,12 +101,14 @@ _original_build_class = __builtins__.__build_class__
 
 def _custom_build_class(func, name, *bases, **kwargs):
     """Intercept class creation to wrap Block classes"""
+    # Use the stored original to avoid recursion
     cls = _original_build_class(func, name, *bases, **kwargs)
     
     # If this looks like a Block class, wrap it
     if name == 'Block' or 'block' in name.lower():
         if hasattr(cls, '__init__'):
-            cls.__init__ = _wrap_block_init(cls.__init__)
+            original_init = cls.__init__
+            cls.__init__ = _wrap_block_init(original_init)
     
     return cls
 
